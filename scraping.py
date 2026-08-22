@@ -96,12 +96,21 @@ def scrape_professional_dataset(phone_urls, pages_per_phone=10):
 # -- Execution --
 # අපි ජනප්‍රිය ෆෝන් කිහිපයකින්ම data ගමු.
 target_devices = [
+    # 1. Flagship Phones (Premium level - High expectations)
     "https://www.gsmarena.com/samsung_galaxy_s24_ultra-reviews-12771.php",
     "https://www.gsmarena.com/apple_iphone_15_pro_max-reviews-12548.php",
-    "https://www.gsmarena.com/google_pixel_8_pro-reviews-12545.php",
-    "https://www.gsmarena.com/xiaomi_14_ultra-reviews-12835.php"
-]
+    
+    # 2. Mid-Range Phones (Balanced reviews)
+    "https://www.gsmarena.com/samsung_galaxy_a54-reviews-12070.php",
+    "https://www.gsmarena.com/xiaomi_redmi_note_13_pro-reviews-12581.php",
+    
+    # 3. Budget / Entry-Level Phones (More critical/negative reviews)
+    "https://www.gsmarena.com/nokia_g22-reviews-12145.php",
+    "https://www.gsmarena.com/realme_c55-reviews-12159.php",
 
+    # 4. Older/Controversial Phones (To get more mixed sentiments)
+    "https://www.gsmarena.com/apple_iphone_se_(2022)-reviews-11410.php"
+]
 # එක් ෆෝන් එකකින් පිටු 15ක් බැගින් (15 pages * ~20 reviews * 4 phones = ~1200 reviews)
 final_dataset = scrape_professional_dataset(target_devices, pages_per_phone=15)
 
