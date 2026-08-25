@@ -10,7 +10,7 @@ from tqdm import tqdm
 # 1. Setup Robust Session with Retries
 def get_secure_session():
     session = requests.Session()
-    # Server error ආවොත් 3 පාරක් try කරන්න
+    
     retry = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
     adapter = HTTPAdapter(max_retries=retry)
     session.mount('http://', adapter)
@@ -28,12 +28,12 @@ def scrape_professional_dataset(phone_urls, pages_per_phone=10):
     session = get_secure_session()
     all_data = []
     
-    # Phone URLs ලිස්ට් එකක් හරහා යෑම
+ 
     for phone_url in phone_urls:
         print(f"\nScraping Device: {phone_url.split('/')[-1].split('-')[0]}")
         base_url = phone_url.replace(".php", "")
         
-        # Progress bar එකක් සමග page එකෙන් page එකට යෑම
+       
         for page in tqdm(range(1, pages_per_phone + 1), desc="Pages Scraped"):
             url = f"{base_url}.php" if page == 1 else f"{base_url}p{page}.php"
             
@@ -78,13 +78,13 @@ def scrape_professional_dataset(phone_urls, pages_per_phone=10):
             except Exception as e:
                 print(f"Error scraping {url}: {e}")
                 
-            # Random delay එකක් (Bot detection එකෙන් බේරෙන්න)
+           
             time.sleep(random.uniform(2.0, 4.5)) 
 
     # Data Quality Check & Save
     df = pd.DataFrame(all_data)
     
-    # Empty reviews අයින් කිරීම (Data Cleaning)
+   
     df.dropna(subset=['review_text'], inplace=True)
     df.drop_duplicates(subset=['review_text'], inplace=True)
     
@@ -94,7 +94,7 @@ def scrape_professional_dataset(phone_urls, pages_per_phone=10):
     return df
 
 # -- Execution --
-# අපි ජනප්‍රිය ෆෝන් කිහිපයකින්ම data ගමු.
+
 target_devices = [
     # 1. Flagship Phones (Premium level - High expectations)
     "https://www.gsmarena.com/samsung_galaxy_s24_ultra-reviews-12771.php",
@@ -111,10 +111,10 @@ target_devices = [
     # 4. Older/Controversial Phones (To get more mixed sentiments)
     "https://www.gsmarena.com/apple_iphone_se_(2022)-reviews-11410.php"
 ]
-# එක් ෆෝන් එකකින් පිටු 15ක් බැගින් (15 pages * ~20 reviews * 4 phones = ~1200 reviews)
+
 final_dataset = scrape_professional_dataset(target_devices, pages_per_phone=15)
 
-# Dataset එකේ පොඩි summary එකක් බලමු
+
 print(final_dataset.head())
 print("\nDataset Info:")
 print(final_dataset.info())
