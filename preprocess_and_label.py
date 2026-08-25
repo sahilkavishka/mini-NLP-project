@@ -22,7 +22,7 @@ for res in nltk_resources:
 class TextPreprocessor:
     def __init__(self):
         self.lemmatizer = WordNetLemmatizer()
-        # Sentiment එකට වැදගත් වන negation words stopwords වලින් ඉවත් කර තබා ගැනීම
+       
         self.stop_words = set(stopwords.words('english')) - {
             'not', 'no', 'nor', 'neither', 'never', 'hardly', 'barely', 'scarcely', 'against', 'but'
         }
@@ -36,15 +36,11 @@ class TextPreprocessor:
         if not isinstance(text, str):
             return ""
         
-        # HTML tags ඉවත් කිරීම
+     
         text = re.sub(r'<.*?>', '', text)
-        # URLs ඉවත් කිරීම
         text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
-        # Non-ASCII emojis / strange symbols ඉවත් කිරීම
         text = text.encode('ascii', 'ignore').decode('ascii')
-        # Contractions expand කිරීම (e.g., "don't" -> "do not")
         text = contractions.fix(text)
-        # Multiple spaces / newlines ඉවත් කිරීම
         text = re.sub(r'\s+', ' ', text).strip()
         
         return text
