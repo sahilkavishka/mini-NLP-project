@@ -25,9 +25,9 @@ The findings demonstrate the profound superiority of transformer models in captu
 ├── baseline_outputs/               # Saved Baseline models and TF-IDF vectorizers
 ├── bert_outputs/                   # Fine-tuned BERT model weights and tokenizer
 ├── final_evaluations/              # High-res comparison charts (Radar, Bar charts)
-├── step1_data_scraper.py           # GSMArena robust scraping script
-├── step2_preprocess_and_label.py   # Text cleaning and VADER annotation
-├── step3_baseline_models.py        # TF-IDF & Traditional ML training pipeline
-├── step4_bert_model.py             # Hugging Face BERT fine-tuning script
-├── step5_advanced_comparison.py    # Evaluation visualization generator
+├── data_scraper.py           # GSMArena robust scraping script
+├── preprocess_and_label.py   # Text cleaning and VADER annotation
+├── baseline_models.py        # TF-IDF & Traditional ML training pipeline
+├── bert_model.py             # Hugging Face BERT fine-tuning script
+├── advanced_comparison.py    # Evaluation visualization generator
 └── README.md
