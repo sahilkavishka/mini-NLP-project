@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Daraz AI Sentiment Analyzer",
+  "version": "1.0",
+  "description": "Analyzes product reviews on Daraz using AI.",
+  "permissions": ["activeTab"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.daraz.lk/products/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
