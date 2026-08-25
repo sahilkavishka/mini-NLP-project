@@ -31,3 +31,29 @@ The findings demonstrate the profound superiority of transformer models in captu
 ├── bert_model.py             # Hugging Face BERT fine-tuning script
 ├── advanced_comparison.py    # Evaluation visualization generator
 └── README.md
+
+
+step 1: Run the FastAPI server:
+Bash --> uvicorn api:app --reload
+The backend should now be running on http://127.0.0.1:8000. Leave this terminal open.
+
+Step 2: Load the Chrome Extension
+Open Google Chrome and go to chrome://extensions/.
+
+Turn on "Developer mode" (toggle switch in the top right corner).
+Click the "Load unpacked" button in the top left.
+Select the extension folder from this repository.
+
+The "Daraz AI Sentiment Analyzer" will now appear in your extensions list!
+
+Step 3: Test the AI!
+Go to any product page on Daraz.lk that has customer reviews.
+The AI Review Insight widget will automatically appear below the product title.
+Click "Deep Scan & Analyze Reviews" and watch the magic happen!
+
+🛠️ Tech Stack
+AI & NLP: PyTorch, Hugging Face (BERT model)
+
+Backend: Python, FastAPI
+
+Frontend: JavaScript (ES6+), HTML/CSS, Chrome Extension API V3
