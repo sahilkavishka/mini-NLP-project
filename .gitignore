@@ -1,0 +1,18 @@
+# Models
+bert_outputs/
+baseline_outputs/
+*.h5
+*.pt
+*.bin
+*.safetensors
+
+# Datasets
+*.csv
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.env
