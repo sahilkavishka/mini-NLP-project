@@ -1,6 +1,11 @@
-# Models
+# Models and Archives
+*.zip
+*.tar
+*.gz
 bert_outputs/
+**/bert_outputs/
 baseline_outputs/
+**/baseline_outputs/
 *.h5
 *.pt
 *.bin

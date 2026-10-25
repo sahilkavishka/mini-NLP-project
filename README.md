@@ -1,4 +1,3 @@
-Markdown
 # 📱 Daraz AI Review Insight & Smartphone Sentiment NLP Pipeline
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
@@ -38,53 +37,47 @@ Due to GitHub's file size limits, the fine-tuned BERT model is hosted externally
 2. **Extract:** Extract the downloaded zip file and place the contents into the `mini NLP/bert_outputs/` directory in this repository.
 
 ### 🖥️ Step 2: Start the Backend Server (FastAPI)
-1. Open your terminal and navigate to the `mini NLP` folder.
+1. Open your terminal and navigate to the project folder.
 2. Install the required Python dependencies:
    ```bash
-   pip install fastapi uvicorn pydantic transformers torch
-Run the FastAPI server:
-
-Bash
-uvicorn api:app --reload
-The backend should now be running on http://127.0.0.1:8000. Leave this terminal open.
+   pip install -r requirements.txt
+   ```
+3. Run the FastAPI server:
+   ```bash
+   cd "mini NLP"
+   uvicorn api:app --reload
+   ```
+The backend should now be running on `http://127.0.0.1:8000`. Leave this terminal open.
 
 ### 🧩 Step 3: Load the Chrome Extension
-
-Open Google Chrome and go to chrome://extensions/.
-
-Turn on "Developer mode" (toggle switch in the top right corner).
-
-Click the "Load unpacked" button in the top left.
-
-Select the Extension folder from this repository.
-
-The "Daraz AI Sentiment Analyzer" will now appear in your extensions list!
-
+1. Open Google Chrome and go to `chrome://extensions/`.
+2. Turn on **"Developer mode"** (toggle switch in the top right corner).
+3. Click the **"Load unpacked"** button in the top left.
+4. Select the `Extension` folder from this repository.
+5. The "Daraz AI Sentiment Analyzer" will now appear in your extensions list!
 
 ### 🛒 Step 4: Test the AI!
-
-Go to any product page on Daraz.lk that has customer reviews.
-
-The AI Review Insight widget will automatically appear below the product title.
-
-Click "Deep Scan & Analyze Reviews" and watch the magic happen!
+1. Go to any product page on Daraz.lk that has customer reviews.
+2. The AI Review Insight widget will automatically appear below the product title.
+3. Click **"Deep Scan & Analyze Reviews"** and watch the magic happen!
 
 ## 🗂️ Repository Structure
-
 ```text
 ├── mini NLP/                   # AI Model & Backend Server
 │   ├── api.py                  # FastAPI server script
-│   ├── data_scraper.py         # GSMArena robust scraping script
+│   ├── scraping.py             # GSMArena robust scraping script
 │   ├── preprocess_and_label.py # Text cleaning and VADER annotation
 │   ├── baseline_models.py      # Traditional ML training pipeline
 │   ├── bert_model.py           # Hugging Face BERT fine-tuning script
 │   ├── advanced_comparison.py  # Evaluation visualization generator
-│   └── bert_outputs/           # (Create this folder and place extracted model here)
+│   └── bert_outputs/           # (Extract downloaded model here)
 │
 ├── Extension/                  # Chrome Extension Source Code
 │   ├── manifest.json
 │   ├── background.js
 │   └── content.js
 │
+├── requirements.txt            # Project dependencies
 ├── .gitignore
 └── README.md
+```
